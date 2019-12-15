@@ -22,6 +22,8 @@ public class Conference {
     @Size(min = 1, max = 150)
     private String name;
 
+    private String description;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime start;
@@ -36,15 +38,17 @@ public class Conference {
     @OneToMany(mappedBy = "conference", cascade = CascadeType.ALL)
     private Set<Participant> participant;
 
-    public Conference(@Size(min = 1, max = 150) String name, LocalDateTime start, LocalDateTime end, Set<Room> room) {
+    public Conference(@Size(min = 1, max = 150) String name, String description, LocalDateTime start, LocalDateTime end, Set<Room> room) {
         this.name = name;
+        this.description = description;
         this.start = start;
         this.end = end;
         this.room = room;
     }
 
-    public Conference(@Size(min = 1, max = 150) String name, LocalDateTime start, LocalDateTime end, Set<Room> room, Set<Participant> participant) {
+    public Conference(@Size(min = 1, max = 150) String name, String description, LocalDateTime start, LocalDateTime end, Set<Room> room, Set<Participant> participant) {
         this.name = name;
+        this.description = description;
         this.start = start;
         this.end = end;
         this.room = room;

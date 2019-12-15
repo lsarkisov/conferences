@@ -25,7 +25,13 @@ public class ConferenceController {
     public List<ConferenceDto> getAllConferences() {
         List<Conference> allConferences = conferenceService.getAllConferences();
         return allConferences.stream().map(conference -> {
-            return new ConferenceDto(conference.getId(), conference.getName(), conference.getStart(), conference.getEnd());
+            return new ConferenceDto(
+                    conference.getId(),
+                    conference.getName(),
+                    conference.getDescription(),
+                    conference.getStart(),
+                    conference.getEnd()
+            );
         }).collect(Collectors.toList());
     }
 

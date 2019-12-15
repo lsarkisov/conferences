@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class ConferenceDto {
     private Long id;
     private String name;
+    private String description;
     private LocalDateTime start;
     private LocalDateTime end;
 }
