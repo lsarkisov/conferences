@@ -23,3 +23,9 @@ export const getRoomsAction = {
   success: data => action(type.ROOMS[SUCCESS], data),
   failure: error => action(type.ROOMS[FAILURE], error)
 };
+
+export const saveConferenceAction = {
+  request: data => action(type.SAVE_CONFERENCE[REQUEST], data),
+  success: data => action(type.SAVE_CONFERENCE[SUCCESS], data),
+  failure: error => action(type.SAVE_CONFERENCE[FAILURE], error)
+}

@@ -15,11 +15,13 @@ export const getConferences = body => callApi('/conference/all', {
   method: 'get',
 });
 
-export const addConference = body => callApi('/conference/new', {
+export const saveConference = body => {
+  console.log('SERVICE', body)
+  return callApi('/conference/new', {
   method: 'post',
   headers: jsonHeaders,
   body: JSON.stringify(body),
-});
+})};
 
 export const getRooms = body => callApi('/room/all', {
   method: 'get',

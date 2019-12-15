@@ -46,7 +46,8 @@ export default function Home(props) {
       }
       {conferences && conferences.length === 0 &&
         (<>
-          <h2>You don't have andy conference</h2>
+          <h2>You don't have any conference</h2>
+          <p><Button><Link to="/conference/new">Create new conference</Link></Button></p>
         </>)
       }
     </div>

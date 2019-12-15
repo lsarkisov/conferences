@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import DatePicker from "react-datepicker";
-
-import { Row, Col, Form, Button, Accordion, Card } from 'react-bootstrap';
+import { Row, Col, Form, Button } from 'react-bootstrap';
+import { saveConferenceAction } from "../../actions/conference";
+import { formatDate } from "../../utils";
 
 export default function NewConference(props) {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const dispatch = useDispatch();
   const { conferences } = useSelector(state => state.conferences);
+  const history = useHistory();
+
+  function onClick() {
+    dispatch(saveConferenceAction.request({payload: {
+      name, 
+      description, 
+      start: formatDate(startDate),
+      end: formatDate(endDate)
+    }}));
+  }
 
   return (
     <>
@@ -16,11 +30,11 @@ export default function NewConference(props) {
         <Col lg={6} md={6} sm={12}>
           <Form.Group controlId="conference.name">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="conference name" />
+            <Form.Control value={name} onChange={e => setName(e.target.value)} type="text" placeholder="conference name" />
           </Form.Group>
           <Form.Group className="confererence-form" controlId="conference.description">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows="3" />
+            <Form.Control value={description} onChange={e => setDescription(e.target.value)} as="textarea" rows="3" />
           </Form.Group>
         </Col>
       </Row>
@@ -50,7 +64,7 @@ export default function NewConference(props) {
                 minDate={startDate}
               />
             </li>
-            <li className="submit-button"><Button variant="primary">Save</Button></li>
+            <li className="submit-button"><Button onClick={onClick} variant="primary">Save</Button></li>
           </ul>
         </Col>
       </Row>

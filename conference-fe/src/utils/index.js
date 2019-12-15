@@ -17,3 +17,9 @@ export function formatSeats(seats) {
 
     return result;
 }
+
+function pad(n) { return n < 10 ? '0' + n : n }
+export function formatDate(date) {
+    const gmt = new Date(date);
+    return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate()+1)} ${pad(date.getHours()+1)}:${pad(date.getMinutes()+1)}`;
+}
