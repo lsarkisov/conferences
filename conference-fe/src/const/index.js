@@ -7,4 +7,6 @@ function createRequestTypes(base) {
   }, {});
 } 
 
-export const CONFERENCES = createRequestTypes("CONFERENCES"); 
+export const CONFERENCES = createRequestTypes("CONFERENCES");
+export const RESERVE_CONFERENCE_PAGE = 'RESERVE_CONFERENCE_PAGE';
+export const ROOMS = createRequestTypes("ROOMS");

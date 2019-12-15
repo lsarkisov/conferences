@@ -1,20 +1,14 @@
 .conference-list {
+    a {
+        color: white;
+        text-decoration: none;
+    }
     .card {
         margin-bottom: 10px;
     }
     
     .btn {
         margin-right: 10px;
-    }
-
-    .conference-date {
-        display: flex;
-        padding-left: 0;
-        font-size: .8rem;
-
-        li:first-child {
-            margin-right: 10px;
-        }
     }
 
 }

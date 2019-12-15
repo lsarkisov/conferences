@@ -1,5 +1,6 @@
 import {
   CONFERENCES,
+  RESERVE_CONFERENCE_PAGE,
 } from '../../const';
 import { SUCCESS, FAILURE } from "../../const/requests";
 
@@ -15,6 +16,12 @@ const conferences = (state = {}, action) => {
       return Object.assign(
         {}, state, {
           conferences: null,
+        },
+      );
+    case RESERVE_CONFERENCE_PAGE:
+      return Object.assign(
+        {}, state, {
+          conferenceId: action.payload,
         },
       );
     default:

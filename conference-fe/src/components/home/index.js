@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from 'react-bootstrap';
-import { getConferencesAction } from "../../actions/conference";
+import { Link } from "react-router-dom";
+import { getConferencesAction, startReserveConferenceAction } from "../../actions/conference";
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ export default function Home(props) {
       dispatch(getConferencesAction.request());
     }
   }, [dispatch, conferences]);
+
+  function reserveConference(id) {
+    dispatch(startReserveConferenceAction(id));
+  }
 
   return (
     <div className="conference-list">
@@ -29,7 +34,11 @@ export default function Home(props) {
                   <li><b>end date: </b>{conf.end}</li>
                 </ul>
               </Card.Title>
-              <Button variant="primary">Reserve ticket</Button>
+              <Button variant="primary">
+                <Link to={`/conference/reserve/${conf.id}`}
+                  onClick={() => reserveConference(conf.id)}
+                >Reserve conference</Link>
+              </Button>
               <Button variant="danger">Cancel</Button>
             </Card.Body>
           </Card>

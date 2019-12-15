@@ -5,3 +5,13 @@ ul {
 label {
     color: $green;
 }
+
+.conference-date {
+    display: flex;
+    padding-left: 0;
+    font-size: .8rem;
+
+    li:first-child {
+        margin-right: 10px;
+    }
+}

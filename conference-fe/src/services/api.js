@@ -20,3 +20,7 @@ export const addConference = body => callApi('/conference/new', {
   headers: jsonHeaders,
   body: JSON.stringify(body),
 });
+
+export const getRooms = body => callApi('/room/all', {
+  method: 'get',
+});

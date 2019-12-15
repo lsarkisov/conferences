@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
 
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button, Accordion, Card } from 'react-bootstrap';
 
-export default function NewConf(props) {
+export default function NewConference(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const dispatch = useDispatch();
+  const { conferences } = useSelector(state => state.conferences);
 
   return (
     <>

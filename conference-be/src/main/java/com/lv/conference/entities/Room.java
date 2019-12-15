@@ -29,9 +29,10 @@ public class Room {
     @JsonIgnore
     private Participant participant;
 
-    public Room(Floor floor, Integer roomNumber, Boolean reserved, Long confId) {
+    public Room(Floor floor, Integer roomNumber, Integer seatNumber, Boolean reserved, Long confId) {
         this.floor = floor;
         this.roomNumber = roomNumber;
+        this.seatNumber = seatNumber;
         this.reserved = reserved;
         this.confId = confId;
     }

@@ -7,7 +7,9 @@ import {
 } from "react-router-dom";
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import Home from "../home";
-import NewConf from "../new-conf";
+import NewConference from "../new-conference";
+import ReserveConference from "../reserve-conference";
+import NoMatch from "../no-match"
 
 export default function App(props) {
   return (
@@ -17,16 +19,21 @@ export default function App(props) {
           <Nav className="mr-auto">
             <NavLink className="nav-link" to="/">Home</NavLink>
             <NavLink className="nav-link" to="/conference/new">Create conference</NavLink>
-            <NavLink className="nav-link" to="/conference/reserve">Book conference</NavLink>
           </Nav>
         </Navbar>
 
         <Switch>
           <Route path="/conference/new">
-            <NewConf />
+            <NewConference />
+          </Route>
+          <Route path="/conference/reserve/:id">
+            <ReserveConference />
           </Route>
           <Route path="/">
             <Home />
+          </Route>
+          <Route>
+            <NoMatch />
           </Route>
         </Switch>
       </Router>
