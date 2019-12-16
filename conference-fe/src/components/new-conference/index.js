@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import DatePicker from "react-datepicker";
 import { Row, Col, Form, Button } from 'react-bootstrap';
@@ -12,7 +12,6 @@ export default function NewConference(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const dispatch = useDispatch();
-  const { conferences } = useSelector(state => state.conferences);
   const history = useHistory();
 
   function onClick() {
@@ -22,6 +21,7 @@ export default function NewConference(props) {
       start: formatDate(startDate),
       end: formatDate(endDate)
     }}));
+    history.push("/conferences");
   }
 
   return (

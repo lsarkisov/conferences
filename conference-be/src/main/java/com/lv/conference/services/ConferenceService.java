@@ -21,8 +21,9 @@ public class ConferenceService {
         return conferenceRepository.save(p);
     }
 
-    public void deleteConference(Long id) {
+    public List<Conference> deleteConference(Long id) {
         conferenceRepository.deleteById(id);
+        return conferenceRepository.findAll();
     }
 
     public List<Conference> getAllConferences() {

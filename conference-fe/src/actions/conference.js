@@ -29,3 +29,9 @@ export const saveConferenceAction = {
   success: data => action(type.SAVE_CONFERENCE[SUCCESS], data),
   failure: error => action(type.SAVE_CONFERENCE[FAILURE], error)
 }
+
+export const startRemoveConferenceAction = {
+  request: id => action(type.REMOVE_CONFERENCE[REQUEST], id),
+  success: data => action(type.REMOVE_CONFERENCE[SUCCESS], data),
+  failure: error => action(type.REMOVE_CONFERENCE[FAILURE], error)
+}

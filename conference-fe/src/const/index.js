@@ -11,3 +11,4 @@ export const CONFERENCES = createRequestTypes("CONFERENCES");
 export const RESERVE_CONFERENCE_PAGE = 'RESERVE_CONFERENCE_PAGE';
 export const ROOMS = createRequestTypes("ROOMS");
 export const SAVE_CONFERENCE = createRequestTypes("SAVE_CONFERENCE");
+export const REMOVE_CONFERENCE = createRequestTypes("REMOVE_CONFERENCE");

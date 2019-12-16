@@ -6,7 +6,7 @@ import {
   NavLink
 } from "react-router-dom";
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import Home from "../home";
+import Conferences from "../conferences";
 import NewConference from "../new-conference";
 import ReserveConference from "../reserve-conference";
 import NoMatch from "../no-match"
@@ -17,8 +17,8 @@ export default function App(props) {
       <Router>
         <Navbar className="main-nav" bg="light" expand="lg">
           <Nav className="mr-auto">
-            <NavLink className="nav-link" to="/">Home</NavLink>
-            <NavLink className="nav-link" to="/conference/new">Create conference</NavLink>
+            <NavLink className="nav-link" to="/conferences">conferences</NavLink>
+            <NavLink className="nav-link" to="/conference/new">create conference</NavLink>
           </Nav>
         </Navbar>
 
@@ -29,8 +29,8 @@ export default function App(props) {
           <Route path="/conference/reserve/:id">
             <ReserveConference />
           </Route>
-          <Route path="/">
-            <Home />
+          <Route path="/conferences">
+            <Conferences />
           </Route>
           <Route>
             <NoMatch />

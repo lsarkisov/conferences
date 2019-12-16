@@ -1,10 +1,11 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 export default function NoMatch(props) {
 
   return (
     <>
-      <h1>404</h1>
+      <Redirect push to="/conferences" />
     </>
   );
 }

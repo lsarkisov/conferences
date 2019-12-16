@@ -47,8 +47,7 @@ public class ConferenceController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteConference(@PathVariable Long id) {
-        conferenceService.deleteConference(id);
-        return new ResponseEntity(HttpStatus.OK);
+    public List<Conference> deleteConference(@PathVariable Long id) {
+        return conferenceService.deleteConference(id);
     }
 }

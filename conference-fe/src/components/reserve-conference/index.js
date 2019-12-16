@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Card, Form, Button, Accordion } from 'react-bootstrap';
+import { Row, Col, Card, Button, Accordion } from 'react-bootstrap';
 import { getRoomsAction } from "../../actions/conference";
-import {formatSeats} from "../../utils";
+import { formatSeats } from "../../utils";
 import Seats from "../seats";
 
 export default function ReserveConference(props) {
@@ -20,7 +20,6 @@ export default function ReserveConference(props) {
   useEffect(() => {
     if (all) {
       const { first, second } = all;
-      console.log('DATA', first, second)
       setFirst(first);
       setSecond(second);
     }
@@ -31,7 +30,7 @@ export default function ReserveConference(props) {
       setConference(conferences.filter(
         conference => conference.id === conferenceId)[0]);
     }
-  }, [dispatch, conferenceId]);
+  }, [dispatch, conferenceId, conferences]);
 
   return (
     <>
@@ -58,30 +57,35 @@ export default function ReserveConference(props) {
             </Row>
             <Row>
               <Col>
-                <Accordion>
-                  <Card>
-                    <Card.Header>
-                      <Accordion.Toggle as={Button} eventKey="0">
-                        Show seats on floor 1
+                {first &&
+                  <Accordion>
+                    <Card>
+                      <Card.Header>
+                        <Accordion.Toggle as={Button} eventKey="0">
+                          Show seats on floor 1
                       </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="0">
-                      <Seats rows={formatSeats(first)} />
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
-                <Accordion>
-                  <Card>
-                    <Card.Header>
-                      <Accordion.Toggle as={Button} eventKey="0">
-                        Show seats on floor 2
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Seats rows={formatSeats(first)} />
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
+                }
+                {second &&
+                  <Accordion>
+                    <Card>
+                      <Card.Header>
+                        <Accordion.Toggle as={Button} eventKey="0">
+                          Show seats on floor 2
                       </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="0">
-                      <Seats rows={formatSeats(second)} />
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+
+                        <Seats rows={formatSeats(second)} />
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
+                }
               </Col>
             </Row>
           </>

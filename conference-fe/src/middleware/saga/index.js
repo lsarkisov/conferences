@@ -4,8 +4,17 @@ import * as types from "../../const";
 import { REQUEST, SUCCESS } from "../../const/requests";
 import * as services from "../../services/api";
 
+function* removeConference(data) {
+  const payload = yield call(() => services.removeConference(data.payload));
+  yield put({ type: types.REMOVE_CONFERENCE[SUCCESS], payload });
+}
+
+function* startToRemoveConference(data) {
+  yield takeEvery(
+    types.REMOVE_CONFERENCE[REQUEST], removeConference);
+}
+
 function* saveConference(data) {
-  console.log('AAA', data)
   const payload = yield call(() => services.saveConference(data.payload));
   yield put({ type: types.SAVE_CONFERENCE[SUCCESS], payload });
 }
@@ -40,5 +49,6 @@ export default function* rootSaga() {
     startToGetConferences(),
     startToGetRooms(),
     startToSaveConference(),
+    startToRemoveConference(),
   ]);
 }

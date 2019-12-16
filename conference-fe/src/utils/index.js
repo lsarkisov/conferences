@@ -1,4 +1,7 @@
 export function formatSeats(seats) {
+    if (!seats) {
+        return;
+    } 
     const formated = seats.map(seat => {
         return {
             id: seat.id,
@@ -20,6 +23,5 @@ export function formatSeats(seats) {
 
 function pad(n) { return n < 10 ? '0' + n : n }
 export function formatDate(date) {
-    const gmt = new Date(date);
     return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate()+1)} ${pad(date.getHours()+1)}:${pad(date.getMinutes()+1)}`;
 }

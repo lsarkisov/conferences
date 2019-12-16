@@ -2,20 +2,22 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import { getConferencesAction, startReserveConferenceAction } from "../../actions/conference";
+import { getConferencesAction, startReserveConferenceAction, startRemoveConferenceAction } from "../../actions/conference";
 
-export default function Home(props) {
+export default function Conferences(props) {
   const dispatch = useDispatch();
   const { conferences } = useSelector(state => state.conferences);
 
   useEffect(() => {
-    if (!conferences) {
-      dispatch(getConferencesAction.request());
-    }
-  }, [dispatch, conferences]);
+    dispatch(getConferencesAction.request());
+  }, [dispatch]);
 
   function reserveConference(id) {
     dispatch(startReserveConferenceAction(id));
+  }
+
+  function removeConference(id) {
+    dispatch(startRemoveConferenceAction.request({ payload: id }));
   }
 
   return (
@@ -39,7 +41,7 @@ export default function Home(props) {
                   onClick={() => reserveConference(conf.id)}
                 >Reserve conference</Link>
               </Button>
-              <Button variant="danger">Cancel</Button>
+              <Button onClick={() => removeConference(conf.id)} variant="danger">Cancel</Button>
             </Card.Body>
           </Card>
         ))
